@@ -1,7 +1,7 @@
 package util.core;
 
 import java.io.IOException;
-import java.util.List;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,16 +11,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class StudentServletMVC
+ * Servlet implementation class IncludeDirectiveServlet
  */
-@WebServlet("/StudentServletMVC")
-public class StudentServletMVC extends HttpServlet {
+@WebServlet("/IncludeDirectiveServlet")
+public class IncludeDirectiveServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public StudentServletMVC() {
+    public IncludeDirectiveServlet() {
         super();
     }
 
@@ -29,10 +29,16 @@ public class StudentServletMVC extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		List<Student> students = StudentUtil.getStudents();
-		request.setAttribute("studentList", students);
+		response.setContentType("text/html");
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/view-studentMVC-detail.jsp");
+		PrintWriter out = response.getWriter();
+		
+		out.println("<html><body>");
+		out.println("<h2> Header & Trailer Included </h2>");
+		out.println("<hr>");
+		out.println("</body></html>");
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("include-dir-example.jsp");
 		dispatcher.forward(request, response);
 	}
 

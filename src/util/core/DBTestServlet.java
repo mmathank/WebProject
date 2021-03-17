@@ -22,7 +22,7 @@ import javax.sql.DataSource;
 public class DBTestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	@Resource(name = "jdbc/MyLocalDB")
+	@Resource(name = "jdbc/DevDB")
 	private DataSource dataSource;
 
 	/**

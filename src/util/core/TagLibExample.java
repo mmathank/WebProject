@@ -1,7 +1,6 @@
 package util.core;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class StudentServletMVC
+ * Servlet implementation class TagLibExample
  */
-@WebServlet("/StudentServletMVC")
-public class StudentServletMVC extends HttpServlet {
+@WebServlet("/TagLibExample")
+public class TagLibExample extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public StudentServletMVC() {
+    public TagLibExample() {
         super();
     }
 
@@ -28,11 +27,8 @@ public class StudentServletMVC extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		List<Student> students = StudentUtil.getStudents();
-		request.setAttribute("studentList", students);
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/view-studentMVC-detail.jsp");
+	
+		RequestDispatcher dispatcher = request.getRequestDispatcher("taglib-example.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -40,7 +36,6 @@ public class StudentServletMVC extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
 	}
 
 }
